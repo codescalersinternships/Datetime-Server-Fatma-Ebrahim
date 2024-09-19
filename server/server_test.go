@@ -7,8 +7,9 @@ import (
 	"strings"
 	"testing"
 	"time"
-	"github.com/codescalersinternships/Datetime-Server-Fatma-Ebrahim/httpserver"
+
 	"github.com/codescalersinternships/Datetime-Server-Fatma-Ebrahim/ginserver"
+	"github.com/codescalersinternships/Datetime-Server-Fatma-Ebrahim/httpserver"
 )
 
 func TestHTTPServer(t *testing.T) {
@@ -44,7 +45,7 @@ func TestHTTPServer(t *testing.T) {
 		httpserver.HTTPHandler(response, request)
 		want := strings.Split(time.Now().Format("Monday 02-01-2006 15:04:05"), ":")[0]
 		var result map[string]interface{}
-		err=json.Unmarshal(response.Body.Bytes(), &result)
+		err = json.Unmarshal(response.Body.Bytes(), &result)
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -103,7 +104,7 @@ func TestGinServer(t *testing.T) {
 		}
 		want := strings.Split(time.Now().Format("Monday 02-01-2006 15:04:05"), ":")[0]
 		var result map[string]interface{}
-		err=json.Unmarshal(response.Body.Bytes(), &result)
+		err = json.Unmarshal(response.Body.Bytes(), &result)
 		if err != nil {
 			t.Fatal(err)
 		}

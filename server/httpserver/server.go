@@ -7,8 +7,6 @@ import (
 	"time"
 )
 
-
-
 func HTTPHandler(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path != "/datetime" {
 		w.WriteHeader(http.StatusNotFound)
@@ -24,7 +22,6 @@ func HTTPHandler(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprint(w, time.Now().Local().Format("Monday 02-01-2006 15:04:05"))
 	}
 }
-
 
 // func main() {
 // 	log.Fatal(http.ListenAndServe(":8000", http.HandlerFunc(HTTPHandler)))

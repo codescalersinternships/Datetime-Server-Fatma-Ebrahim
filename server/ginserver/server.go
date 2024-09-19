@@ -1,15 +1,16 @@
 package ginserver
 
 import (
-	"github.com/gin-gonic/gin"
 	"time"
+
+	"github.com/gin-gonic/gin"
 )
 
 func GinHandler() *gin.Engine {
-	gin.SetMode(gin.ReleaseMode)//to be added to env variable
-	router :=gin.New()
+	gin.SetMode(gin.ReleaseMode)
+	router := gin.New()
 	router.GET("/datetime", func(c *gin.Context) {
-		contenttype:=c.GetHeader("Content-Type")
+		contenttype := c.GetHeader("Content-Type")
 		if contenttype == "application/json" {
 			c.JSON(200, gin.H{
 				"datetime": time.Now().Local().Format("Monday 02-01-2006 15:04:05"),
@@ -22,5 +23,3 @@ func GinHandler() *gin.Engine {
 	return router
 
 }
-
-
