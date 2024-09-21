@@ -13,8 +13,10 @@ jobs:
             - name: Set up Go
               uses: actions/setup-go@v5
 
-            - name: Build
+            - name: Build GIN server
               run: 	go build -o bin/ginserver ./cmd/ginmain/main.go
+            
+            - name: Build HTTP server
               run: 	go build -o bin/httpserver ./cmd/httpmain/main.go
     
     golangci:
