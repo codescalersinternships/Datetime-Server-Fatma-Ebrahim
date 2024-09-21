@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/codescalersinternships/Datetime-Server-Fatma-Ebrahim/ginserver"
+	"github.com/codescalersinternships/Datetime-Server-Fatma-Ebrahim/pkg/ginserver"
 )
 
 func main() {

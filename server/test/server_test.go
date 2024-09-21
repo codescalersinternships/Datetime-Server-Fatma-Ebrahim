@@ -8,8 +8,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/codescalersinternships/Datetime-Server-Fatma-Ebrahim/ginserver"
-	"github.com/codescalersinternships/Datetime-Server-Fatma-Ebrahim/httpserver"
+	"github.com/codescalersinternships/Datetime-Server-Fatma-Ebrahim/pkg/ginserver"
+	"github.com/codescalersinternships/Datetime-Server-Fatma-Ebrahim/pkg/httpserver"
 )
 
 func TestHTTPServer(t *testing.T) {
