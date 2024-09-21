@@ -1,0 +1,14 @@
+version: '3'
+services:
+  ginserver:
+    build: 
+      context: .
+      dockerfile: Dockerfile.gin  
+    ports:
+      - "8080:8080"
+  httpserver:
+    build: 
+      context: .
+      dockerfile: Dockerfile.http 
+    ports:
+      - "8000:8000"
