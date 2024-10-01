@@ -9,6 +9,7 @@ import (
 
 func main() {
 	fmt.Println("datetime server running on http://localhost:8080")
-	log.Fatal(ginserver.GinHandler().Run(":8080"))
-
+	if err := ginserver.GinHandler().Run(":8080"); err != nil {
+		log.Fatal(err)
+	}
 }

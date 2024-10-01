@@ -3,12 +3,12 @@ services:
   ginserver:
     build: 
       context: .
-      dockerfile: Dockerfile.gin  
+      dockerfile: gin.Dockerfile  
     ports:
       - "8080:8080"
   httpserver:
     build: 
       context: .
-      dockerfile: Dockerfile.http 
+      dockerfile: http.Dockerfile
     ports:
       - "8000:8000"

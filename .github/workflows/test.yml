@@ -14,10 +14,10 @@ jobs:
               uses: actions/setup-go@v5
 
             - name: Build GIN server
-              run: 	go build -o bin/ginserver ./cmd/ginmain/main.go
+              run: 	go build -o bin/ginserver ./cmd/gin_server/main.go
             
             - name: Build HTTP server
-              run: 	go build -o bin/httpserver ./cmd/httpmain/main.go
+              run: 	go build -o bin/httpserver ./cmd/http_server/main.go
     
     golangci:
         runs-on: ubuntu-latest
@@ -46,4 +46,4 @@ jobs:
               uses: actions/setup-go@v5
 
             - name: Test
-              run: go test ./test
+              run: go test ./...

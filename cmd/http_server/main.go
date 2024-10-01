@@ -10,6 +10,8 @@ import (
 
 func main() {
 	fmt.Println("datetime server running on http://localhost:8000")
-	log.Fatal(http.ListenAndServe(":8000", http.HandlerFunc(httpserver.HTTPHandler)))
+	if err := http.ListenAndServe(":8000", http.HandlerFunc(httpserver.HTTPHandler)); err != nil {
+		log.Fatal(err)
+	}
 
 }
