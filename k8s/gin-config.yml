@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ginserver-deployment
+  labels:
+    app: ginserver
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ginserver
+  template:
+    metadata:
+      labels:
+        app: ginserver
+    spec:
+      containers:
+      - name: ginserver
+        image: fatmaebrahim/ginserver:latest
+        ports:
+        - containerPort: 8080
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ginserver-service
+spec:
+  type: NodePort
+  selector:
+    app: ginserver
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+      nodePort: 30000
