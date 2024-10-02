@@ -1,4 +1,4 @@
-package main
+package httpserver
 
 import (
 	"encoding/json"
@@ -7,8 +7,6 @@ import (
 	"strings"
 	"testing"
 	"time"
-
-	"github.com/codescalersinternships/Datetime-Server-Fatma-Ebrahim/pkg/httpserver"
 )
 
 func TestHTTPServer(t *testing.T) {
@@ -21,7 +19,7 @@ func TestHTTPServer(t *testing.T) {
 		response := httptest.NewRecorder()
 		request.Header.Set("Content-Type", "plain text")
 
-		httpserver.HTTPHandler(response, request)
+		HTTPHandler(response, request)
 		got := strings.Split(response.Body.String(), ":")[0]
 		want := strings.Split(time.Now().Format(time.RubyDate), ":")[0]
 		if response.Result().StatusCode != http.StatusOK {
@@ -41,7 +39,7 @@ func TestHTTPServer(t *testing.T) {
 		response := httptest.NewRecorder()
 		request.Header.Set("Content-Type", "application/json")
 
-		httpserver.HTTPHandler(response, request)
+		HTTPHandler(response, request)
 		want := strings.Split(time.Now().Format(time.RubyDate), ":")[0]
 		var result map[string]interface{}
 		err = json.Unmarshal(response.Body.Bytes(), &result)
@@ -61,7 +59,7 @@ func TestHTTPServer(t *testing.T) {
 			t.Fatal(err)
 		}
 		response := httptest.NewRecorder()
-		httpserver.HTTPHandler(response, request)
+		HTTPHandler(response, request)
 		if response.Result().StatusCode != http.StatusNotFound {
 			t.Errorf("expected %d, got %d", http.StatusNotFound, response.Result().StatusCode)
 		}

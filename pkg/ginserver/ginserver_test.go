@@ -1,4 +1,4 @@
-package main
+package ginserver
 
 import (
 	"encoding/json"
@@ -7,13 +7,11 @@ import (
 	"strings"
 	"testing"
 	"time"
-
-	"github.com/codescalersinternships/Datetime-Server-Fatma-Ebrahim/pkg/ginserver"
 )
 
 func TestGinServer(t *testing.T) {
 	t.Run("successfull request with plain text", func(t *testing.T) {
-		router := ginserver.GinHandler()
+		router := GinHandler()
 		response := httptest.NewRecorder()
 		request, err := http.NewRequest("GET", "/datetime", nil)
 		if err != nil {
@@ -32,7 +30,7 @@ func TestGinServer(t *testing.T) {
 	})
 
 	t.Run("successfull request with application/json", func(t *testing.T) {
-		router := ginserver.GinHandler()
+		router := GinHandler()
 		response := httptest.NewRecorder()
 		request, err := http.NewRequest("GET", "/datetime", nil)
 		if err != nil {
@@ -57,7 +55,7 @@ func TestGinServer(t *testing.T) {
 	})
 
 	t.Run("unsuccessfull request", func(t *testing.T) {
-		router := ginserver.GinHandler()
+		router := GinHandler()
 		response := httptest.NewRecorder()
 		request, err := http.NewRequest("GET", "", nil)
 		if err != nil {
