@@ -1,0 +1,6 @@
+name: httpserver-helm
+namespace: default
+image: fatmaebrahim/httpserver:latest
+ports:
+  internal: 8000
+  node: 30002
