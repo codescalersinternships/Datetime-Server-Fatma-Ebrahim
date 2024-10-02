@@ -23,7 +23,7 @@ func TestHTTPServer(t *testing.T) {
 
 		httpserver.HTTPHandler(response, request)
 		got := strings.Split(response.Body.String(), ":")[0]
-		want := strings.Split(time.Now().Format("Monday 02-01-2006 15:04:05"), ":")[0]
+		want := strings.Split(time.Now().Format(time.RubyDate), ":")[0]
 		if response.Result().StatusCode != http.StatusOK {
 			t.Errorf("expected %d, got %d", http.StatusOK, response.Result().StatusCode)
 		}
@@ -42,7 +42,7 @@ func TestHTTPServer(t *testing.T) {
 		request.Header.Set("Content-Type", "application/json")
 
 		httpserver.HTTPHandler(response, request)
-		want := strings.Split(time.Now().Format("Monday 02-01-2006 15:04:05"), ":")[0]
+		want := strings.Split(time.Now().Format(time.RubyDate), ":")[0]
 		var result map[string]interface{}
 		err = json.Unmarshal(response.Body.Bytes(), &result)
 		if err != nil {

@@ -14,16 +14,11 @@ func HTTPHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	contenttype := r.Header.Get("Content-Type")
 	if contenttype == "application/json" {
-		datetime := time.Now().Local().Format("Monday 02-01-2006 15:04:05")
+		datetime := time.Now().Local().Format(time.RubyDate)
 		data, _ := json.Marshal(map[string]string{"datetime": datetime})
 		fmt.Fprint(w, string(data))
 	} else {
 
-		fmt.Fprint(w, time.Now().Local().Format("Monday 02-01-2006 15:04:05"))
+		fmt.Fprint(w, time.Now().Local().Format(time.RubyDate))
 	}
 }
-
-// func main() {
-// 	log.Fatal(http.ListenAndServe(":8000", http.HandlerFunc(HTTPHandler)))
-
-// }

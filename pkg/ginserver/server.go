@@ -14,10 +14,10 @@ func GinHandler() *gin.Engine {
 		contenttype := c.GetHeader("Content-Type")
 		if contenttype == "application/json" {
 			c.JSON(http.StatusOK, gin.H{
-				"datetime": time.Now().Local().Format("Monday 02-01-2006 15:04:05"),
+				"datetime": time.Now().Local().Format(time.RubyDate),
 			})
 		} else {
-			c.String(http.StatusOK, time.Now().Local().Format("Monday 02-01-2006 15:04:05"))
+			c.String(http.StatusOK, time.Now().Local().Format(time.RubyDate))
 
 		}
 	})

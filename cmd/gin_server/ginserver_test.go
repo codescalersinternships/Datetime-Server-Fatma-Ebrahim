@@ -25,7 +25,7 @@ func TestGinServer(t *testing.T) {
 			t.Errorf("expected %d, got %d", http.StatusOK, response.Code)
 		}
 		got := strings.Split(response.Body.String(), ":")[0]
-		want := strings.Split(time.Now().Format("Monday 02-01-2006 15:04:05"), ":")[0]
+		want := strings.Split(time.Now().Format(time.RubyDate), ":")[0]
 		if got != want {
 			t.Errorf("expected %q, got %q", want, got)
 		}
@@ -43,7 +43,7 @@ func TestGinServer(t *testing.T) {
 		if response.Code != http.StatusOK {
 			t.Errorf("expected %d, got %d", http.StatusOK, response.Code)
 		}
-		want := strings.Split(time.Now().Format("Monday 02-01-2006 15:04:05"), ":")[0]
+		want := strings.Split(time.Now().Format(time.RubyDate), ":")[0]
 		var result map[string]interface{}
 		err = json.Unmarshal(response.Body.Bytes(), &result)
 		if err != nil {
