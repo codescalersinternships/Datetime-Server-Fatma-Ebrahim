@@ -1,0 +1,6 @@
+name: ginserver-helm
+namespace: default
+image: fatmaebrahim/ginserver:latest
+ports:
+  internal: 8080
+  node: 30001
